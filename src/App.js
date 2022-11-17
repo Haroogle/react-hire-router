@@ -1,8 +1,15 @@
-import { useState } from "react"
-import "./styles.css"
+import { useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import "./styles.css";
+import Dashboard from "./pages/Dashboard";
+import PersonProfile from "./pages/PersonProfile";
 
 export default function App() {
-  const [hiredPeople, setHiredPeople] = useState([])
+  const [hiredPeople, setHiredPeople] = useState([]);
+
+  function hirePerson(person) {
+    setHiredPeople([...hiredPeople, person]);
+  }
 
   return (
     <>
@@ -14,6 +21,13 @@ export default function App() {
           </ul>
         </nav>
       </header>
+      <Routes>
+        <Route path="/" element={<Dashboard hiredPeople={hiredPeople} />} />
+        <Route
+          path="/view/:id"
+          element={<PersonProfile hirePerson={hirePerson} />}
+        />
+      </Routes>
     </>
-  )
+  );
 }
