@@ -5,17 +5,18 @@ import { useLocation } from "react-router";
 function PersonProfile(props) {
   const [person, setPerson] = useState(null);
   const location = useLocation();
+  console.log("location", location);
+  console.log("person", person);
 
   useEffect(() => {
     if (location.state) {
-      const { person } = location.state();
+      const { person } = location.state;
       setPerson(person);
     }
   }, [location]);
 
   if (!person) return <p>Loading...</p>;
-  console.log("location", location);
-  console.log("person", person);
+
   return (
     <article>
       <h2>
