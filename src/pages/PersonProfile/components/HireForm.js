@@ -6,6 +6,12 @@ function HireForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const hired = {
+      ...person,
+      wage: wage,
+    };
+
+    hirePerson(hired);
   }
 
   return (

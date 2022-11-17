@@ -3,6 +3,7 @@ import HireForm from "./components/HireForm";
 import { useLocation } from "react-router";
 
 function PersonProfile(props) {
+  const { hirePerson } = props;
   const [person, setPerson] = useState(null);
   const location = useLocation();
   console.log("location", location);
@@ -22,7 +23,7 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <HireForm person={person} hirePerson={hirePerson} />
     </article>
   );
 }
